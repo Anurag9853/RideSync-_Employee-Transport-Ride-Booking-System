@@ -1,0 +1,39 @@
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.status.scheduled {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-badge.status.full {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status.cancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.status.booked {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.role.admin {
+  background-color: #ede9fe;
+  color: #6d28d9;
+}
+
+.status-badge.role.employee {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
