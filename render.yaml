@@ -1,3 +1,10 @@
+databases:
+  - name: ridesync-db
+    databaseName: ridesync
+    user: ridesync_user
+    plan: free
+    region: oregon
+
 services:
   - type: web
     name: ridesync-backend
@@ -5,18 +12,29 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     plan: free
+    region: oregon
     healthCheckPath: /actuator/health
     envVars:
-      - key: MYSQLHOST
-        sync: false
-      - key: MYSQLPORT
-        sync: false
-      - key: MYSQLDATABASE
-        sync: false
-      - key: MYSQLUSER
-        sync: false
-      - key: MYSQLPASSWORD
-        sync: false
+      - key: DB_HOST
+        fromDatabase:
+          name: ridesync-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: ridesync-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: ridesync-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: ridesync-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: ridesync-db
+          property: password
       - key: JWT_SECRET
         generateValue: true
       - key: PORT
