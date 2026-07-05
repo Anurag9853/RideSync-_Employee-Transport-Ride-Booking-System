@@ -29,7 +29,14 @@ public class JwtTokenProvider {
 
     @PostConstruct
     public void init() {
-        this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        try {
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-512");
+            byte[] hash = digest.digest(jwtSecret.getBytes(StandardCharsets.UTF_8));
+            this.key = Keys.hmacShaKeyFor(hash);
+        } catch (java.security.NoSuchAlgorithmException e) {
+            // Fallback to standard byte array if SHA-512 isn't available (should not happen)
+            this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        }
     }
 
     public String generateToken(Authentication authentication) {
