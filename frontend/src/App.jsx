@@ -18,6 +18,15 @@ import EmployeeDashboard from './pages/employee/EmployeeDashboard.jsx';
 import BrowseRides from './pages/employee/BrowseRides.jsx';
 import MyBookings from './pages/employee/MyBookings.jsx';
 
+// Redesigned/New pages
+import BookRide from './pages/BookRide.jsx';
+import Drivers from './pages/Drivers.jsx';
+import Vehicles from './pages/Vehicles.jsx';
+import AnalyticsPage from './pages/AnalyticsPage.jsx';
+import NotificationsPage from './pages/NotificationsPage.jsx';
+import ReportsPage from './pages/ReportsPage.jsx';
+import SettingsPage from './pages/SettingsPage.jsx';
+
 import { ROLES, ROUTES } from './constants/roles.js';
 
 function AppContent() {
@@ -29,6 +38,7 @@ function AppContent() {
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.REGISTER} element={<Register />} />
 
+        {/* Admin Console Route Scope */}
         <Route
           path="/admin/*"
           element={
@@ -36,6 +46,18 @@ function AppContent() {
               <AdminLayout>
                 <Routes>
                   <Route path="dashboard" element={<AdminDashboard />} />
+                  <Route path="book-ride" element={<BookRide />} />
+                  <Route path="my-trips" element={<MyBookings />} />
+                  <Route path="employees" element={<ManageUsers />} />
+                  <Route path="drivers" element={<Drivers />} />
+                  <Route path="vehicles" element={<Vehicles />} />
+                  <Route path="ride-requests" element={<ManageBookings />} />
+                  <Route path="analytics" element={<AnalyticsPage />} />
+                  <Route path="notifications" element={<NotificationsPage />} />
+                  <Route path="reports" element={<ReportsPage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+
+                  {/* Legacy redirects & overrides */}
                   <Route path="rides" element={<ManageRides />} />
                   <Route path="users" element={<ManageUsers />} />
                   <Route path="bookings" element={<ManageBookings />} />
@@ -46,6 +68,7 @@ function AppContent() {
           }
         />
 
+        {/* Employee Portal Route Scope */}
         <Route
           path="/employee/*"
           element={
@@ -53,6 +76,18 @@ function AppContent() {
               <EmployeeLayout>
                 <Routes>
                   <Route path="dashboard" element={<EmployeeDashboard />} />
+                  <Route path="book-ride" element={<BookRide />} />
+                  <Route path="my-trips" element={<MyBookings />} />
+                  <Route path="employees" element={<ManageUsers readOnly={true} />} />
+                  <Route path="drivers" element={<Drivers readOnly={true} />} />
+                  <Route path="vehicles" element={<Vehicles readOnly={true} />} />
+                  <Route path="ride-requests" element={<MyBookings />} />
+                  <Route path="analytics" element={<AnalyticsPage />} />
+                  <Route path="notifications" element={<NotificationsPage />} />
+                  <Route path="reports" element={<ReportsPage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+
+                  {/* Legacy redirects & overrides */}
                   <Route path="rides" element={<BrowseRides />} />
                   <Route path="bookings" element={<MyBookings />} />
                   <Route path="*" element={<Navigate to={ROUTES.EMPLOYEE_DASHBOARD} replace />} />

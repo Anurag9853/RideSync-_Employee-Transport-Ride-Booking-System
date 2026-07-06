@@ -1,9 +1,10 @@
 .manage-table {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   margin-top: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .manage-table table {
@@ -12,27 +13,29 @@
 }
 
 .manage-table thead {
-  background-color: #f9fafb;
+  background-color: var(--bg-sidebar);
 }
 
 .manage-table th {
-  padding: 12px 16px;
+  padding: 14px 20px;
   text-align: left;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #374151;
-  border-bottom: 1px solid #e5e7eb;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .manage-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
   font-size: 0.875rem;
-  color: #1f2937;
+  color: var(--text-main);
 }
 
 .manage-table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--bg-card-hover);
 }
 
 .manage-table tbody tr:last-child td {
@@ -42,22 +45,25 @@
 .btn-link {
   background: none;
   border: none;
-  color: #2563eb;
+  color: var(--primary);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   padding: 0;
-  text-decoration: underline;
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .btn-link:hover {
-  color: #1d4ed8;
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 .btn-link.danger {
-  color: #dc2626;
+  color: var(--color-error);
 }
 
 .btn-link.danger:hover {
-  color: #b91c1c;
+  color: var(--color-error);
+  text-decoration: underline;
 }

@@ -38,8 +38,8 @@ export default function Register() {
         password
       });
 
-      setSuccess('Registration successful. Redirecting to login…');
-      setTimeout(() => navigate('/login', { replace: true }), 800);
+      setSuccess('Account created successfully! Redirecting to login…');
+      setTimeout(() => navigate('/login', { replace: true }), 1000);
     } catch (err) {
       const message =
         err?.response?.data?.message ||
@@ -55,8 +55,9 @@ export default function Register() {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        <h1 className="auth-title">Register</h1>
-        <p className="auth-subtitle">Create an employee account to book rides.</p>
+        <div className="auth-logo">R</div>
+        <h1 className="auth-title">Create account</h1>
+        <p className="auth-subtitle">Register for the RideSync corporate ride platform.</p>
 
         {error ? <div className="auth-error">{error}</div> : null}
         {success ? <div className="auth-success">{success}</div> : null}
@@ -69,8 +70,9 @@ export default function Register() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
+              placeholder="Your full name"
               autoComplete="name"
+              required
             />
           </label>
 
@@ -83,6 +85,7 @@ export default function Register() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
               autoComplete="email"
+              required
             />
           </label>
 
@@ -95,16 +98,17 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="At least 6 characters"
               autoComplete="new-password"
+              required
             />
           </label>
 
-          <button className="btn primary" type="submit" disabled={!canSubmit}>
-            {submitting ? 'Creating…' : 'Create account'}
+          <button className="btn primary btn-auth" type="submit" disabled={!canSubmit}>
+            {submitting ? 'Creating account…' : 'Sign up'}
           </button>
         </form>
 
         <div className="auth-footer">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </div>
       </div>
     </div>

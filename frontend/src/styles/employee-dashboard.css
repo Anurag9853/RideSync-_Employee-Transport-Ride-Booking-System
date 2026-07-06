@@ -1,40 +1,45 @@
 .dashboard-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .dashboard-card {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 32px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  padding: 24px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-card:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-  border-color: #2563eb;
+.dashboard-card:hover .card-arrow {
+  transform: translateX(4px);
+  color: var(--primary);
 }
 
 .card-icon {
-  font-size: 48px;
-  width: 80px;
-  height: 80px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f9ff;
-  border-radius: 16px;
+  background-color: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--primary);
   flex-shrink: 0;
+}
+
+.card-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .card-content {
@@ -42,25 +47,162 @@
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 8px 0;
+  margin-bottom: 4px;
 }
 
 .card-description {
-  font-size: 0.9375rem;
-  color: #6b7280;
-  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
 }
 
 .card-arrow {
-  font-size: 24px;
-  color: #9ca3af;
-  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
 }
 
-.dashboard-card:hover .card-arrow {
-  color: #2563eb;
-  transform: translateX(4px);
+/* Upcoming Hero Trip Display */
+.upcoming-hero {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-sidebar) 100%);
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.upcoming-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upcoming-time {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.upcoming-route-display {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .upcoming-route-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.route-stop {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stop-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.stop-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.route-line-connector {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 140px;
+}
+
+@media (max-width: 640px) {
+  .route-line-connector {
+    display: none;
+  }
+}
+
+.connector-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.connector-line {
+  flex: 1;
+  height: 1px;
+  border-top: 1px dashed var(--border-color-hover);
+}
+
+.upcoming-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 640px) {
+  .upcoming-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.meta-value {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Empty Hero Styling */
+.empty-hero {
+  padding: 36px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-hero-content {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-hero-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.empty-hero-content p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
 }

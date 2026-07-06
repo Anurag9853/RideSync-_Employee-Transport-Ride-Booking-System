@@ -53,7 +53,7 @@ export default function Login() {
         err?.response?.data?.message ||
         err?.response?.data?.error ||
         err?.message ||
-        'Login failed. Please try again.';
+        'Login failed. Please verify your credentials and try again.';
       setError(message);
     } finally {
       setSubmitting(false);
@@ -63,8 +63,9 @@ export default function Login() {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        <h1 className="auth-title">Login</h1>
-        <p className="auth-subtitle">Access your RideSync account.</p>
+        <div className="auth-logo">R</div>
+        <h1 className="auth-title">Welcome back</h1>
+        <p className="auth-subtitle">Access the RideSync employee transport portal.</p>
 
         {error ? <div className="auth-error">{error}</div> : null}
 
@@ -78,6 +79,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
               autoComplete="email"
+              required
             />
           </label>
 
@@ -90,16 +92,17 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               autoComplete="current-password"
+              required
             />
           </label>
 
-          <button className="btn primary" type="submit" disabled={!canSubmit}>
-            {submitting ? 'Logging in…' : 'Login'}
+          <button className="btn primary btn-auth" type="submit" disabled={!canSubmit}>
+            {submitting ? 'Signing in…' : 'Sign in'}
           </button>
         </form>
 
         <div className="auth-footer">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Create one</Link>
         </div>
       </div>
     </div>
