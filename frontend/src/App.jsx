@@ -26,6 +26,7 @@ import AnalyticsPage from './pages/AnalyticsPage.jsx';
 import NotificationsPage from './pages/NotificationsPage.jsx';
 import ReportsPage from './pages/ReportsPage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 
 import { ROLES, ROUTES } from './constants/roles.js';
 
@@ -97,8 +98,8 @@ function AppContent() {
           }
         />
 
-        <Route path="/" element={<Navigate to={ROUTES.LOGIN} replace />} />
-        <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toast toasts={toasts} onRemove={removeToast} />
     </>
